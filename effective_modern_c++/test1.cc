@@ -1,4 +1,5 @@
 
+#include <gtest/gtest.h>
 #include <stddef.h>
 #include <stdio.h>
 
@@ -13,8 +14,14 @@ constexpr size_t func(T& t){
     return array_size(t);
 }
 
-int main(){
+TEST(test_case,test0){
     const char array[] = "hello world";
     int  n = func(array);
-    printf("%d\n",n);
+    ASSERT_EQ(n,12);
+}
+
+
+int main(int argc,char** argv){
+    testing::InitGoogleTest(&argc,argv);
+    return RUN_ALL_TESTS();
 }
